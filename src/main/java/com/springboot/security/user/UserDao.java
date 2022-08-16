@@ -1,6 +1,7 @@
 package com.springboot.security.user;
 
 
+import com.springboot.security.user.model.GetUserRes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -36,5 +37,24 @@ public class UserDao {
         );
 
     }
+    public List<GetUserRes> userRes(){
+        return this.jdbcTemplate.query("Select * from user",
+                (rs, rowNum) -> new GetUserRes(
+                        rs.getString("user_id"),
+                        rs.getString("nickname"),
+                        rs.getString("personal"),
+                        rs.getString("face_shape"),
+                        rs.getString("skin_tone"),
+                        rs.getString("fashion_style"),
+                        rs.getString("admin"),
+                        rs.getString("gender"),
+                        rs.getString("status"),
+                        rs.getTimestamp("created_at"),
+                        rs.getTimestamp("updated_at")
+                )
+
+        );
+    }
+
 
 }

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 public class GetUserRes {
-    private int user_id;
+    private String user_id;
     private String nickname;
     private String personal;
     private String face_shape;
