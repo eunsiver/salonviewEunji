@@ -11,21 +11,19 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import com.springboot.security.user.UserDao;
 import org.apache.tomcat.util.json.JSONParser;
 import org.apache.tomcat.util.json.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping
 public class NaverLoginController {
 
     @Autowired
-    UserDao userLoginDao;
+    NaverLoginDao loginDao;
     private String CLIENT_ID = "VHx6N_Qe2LFFoLvRnzkr"; //애플리케이션 클라이언트 아이디값";
     private String CLI_SECRET = "hcNYN2Mjth";
 
@@ -38,6 +36,8 @@ public class NaverLoginController {
         apiURL += String.format("&client_id=%s&redirect_uri=%s&state=%s",
                 CLIENT_ID, redirectURI, state);
         session.setAttribute("state", state);
+
+//        System.out.println(session.getId());
         model.addAttribute("apiURL", apiURL);
         return "test-naver";
     }
@@ -79,21 +79,32 @@ public class NaverLoginController {
             session.setAttribute("currentRT", json.get("refresh_token"));
            // System.out.println( "token= "+json.get("access_token"));
 
+
+
            // Map<String, Object> row = new JSONParser(resUser).parseObject();
           //  Map<String, Object> user = (Map<String, Object>) row.get("response");
+
+
             int resultCode = 0;
-//
             Map map= getProfileFromNaver(json.get("access_token").toString());
 
            Map<String, String> aRow = new HashMap<>();
            String user_Id = (String) map.get("id");
-           String nickname = (String) map.get("nickname");
-           String gender=(String)map.get("gender");
-           aRow.put("user_id", user_Id);
-           aRow.put("nickname", nickname);
-           aRow.put("gender", gender);
-           resultCode = userLoginDao.insertAnUserOAuth(aRow);
-            System.out.println("resultCode="+resultCode);
+            session.setAttribute("currentUserId",user_Id); //현재 로그인 유저 아이디 세션에 저장!!
+//            System.out.println("current userId = "+session.getAttribute("currentUserId")) ;
+
+            if(loginDao.checkUserExist(user_Id)==0){
+                String nickname = (String) map.get("nickname");
+                String gender=(String)map.get("gender");
+                aRow.put("user_id", user_Id);
+                aRow.put("nickname", nickname);
+                aRow.put("gender", gender);
+                resultCode = loginDao.insertAnUserOAuth(aRow);
+            }
+
+
+
+
 
         } else {
             model.addAttribute("res", "Login failed!");

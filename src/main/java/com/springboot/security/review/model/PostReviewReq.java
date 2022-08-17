@@ -1,16 +1,18 @@
 package com.springboot.security.review.model;
 
-import jdk.javadoc.internal.doclets.formats.html.markup.Text;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
-public class PostReviewsRes {
+public class PostReviewReq {
+
     private int review_id;
-    private int shop_id;
+    private String shop_name;
     private String user_id;
     private String hair_type;
     private String hair_length;
@@ -18,7 +20,7 @@ public class PostReviewsRes {
     private String kindness;
     private String price;
     private String rating;
-    private Text content;
-
+    private String content;
+    private List<GetReviewsPhotoRes> photo;
 
 }

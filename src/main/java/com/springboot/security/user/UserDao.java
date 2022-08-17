@@ -25,18 +25,7 @@ public class UserDao {
 
 
 //로그인 user정보 DB에 저장
-    public int insertAnUserOAuth(Map<String, String> user) {
-        String sql = "insert into user"
-                + "(user_id,nickname, gender, created_at, updated_at) "
-                + "values(?, ?, ?, sysdate(), sysdate())";
 
-        return jdbcTemplate.update(sql,
-                user.get("user_id"),
-                user.get("nickname"),
-                user.get("gender")
-        );
-
-    }
     public List<GetUserRes> userRes(){
         return this.jdbcTemplate.query("Select * from user",
                 (rs, rowNum) -> new GetUserRes(

@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 public class UserProvider {
-
+    @Autowired
     private final UserDao userDao;
 
 
@@ -29,4 +29,5 @@ public class UserProvider {
 
         return userRes;
     }
+
 }

@@ -33,9 +33,7 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="ac6ab3a2-cf48-442a-b8f1-670a29cf7499" object-ref="schemas/salonview/tables/user" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="ac6ab3a2-cf48-442a-b8f1-670a29cf7499" />

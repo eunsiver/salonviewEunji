@@ -12,7 +12,10 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
 
-    private UserProvider userProvider;
+    @Autowired
+    private final UserProvider userProvider;
+    @Autowired
+    private  UserService userService;
 
     @Autowired
     public UserController(UserProvider userProvider) {
@@ -24,6 +27,8 @@ public class UserController {
         List<GetUserRes> userRes = userProvider.getUser();
         return userRes;
     }
+
+
 
 
 }
