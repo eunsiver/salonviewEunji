@@ -18,7 +18,7 @@ public class GetReviewsRes {
     private String hair_tag;
     private String kindness;
     private String price;
-    private String rating;
+    private int rating;
     private String content;
     private List<GetReviewsPhotoRes> photo;
 

@@ -18,11 +18,12 @@ public class ReviewDao {
     }
 
     //리뷰 작성
-    public int insertReview(String userIdx, PostReviewReq postReviewReq){
+    public int insertReview(String userId, int shopId,PostReviewReq postReviewReq){
         String insertPostQuery =
-                "        INSERT INTO reviews(userIdx, content)\n" +
-                        "        VALUES (?, ?);";
-        Object[] insertPostParams = new Object[]{userIdx,postReviewReq.getContent()};
+                "        INSERT INTO review(user_Id,shop_Id, hair_type,hair_length,hair_tag,kindness,price,rating,content)\n" +
+                        "        VALUES (?, ?,?,?,?,?,?,?,?);";
+        Object[] insertPostParams = new Object[]{userId,shopId,postReviewReq.getHair_type(),postReviewReq.getHair_length(),
+        postReviewReq.getHair_tag(),postReviewReq.getKindness(),postReviewReq.getPrice(),postReviewReq.getRating(),postReviewReq.getContent()};
         this.jdbcTemplate.update(insertPostQuery, insertPostParams);
 
         String lastInserIdQuery = "select last_insert_id()";
@@ -30,15 +31,15 @@ public class ReviewDao {
 
     }
 
-    // 리뷰 이미지 작성
-//    public int insertReviewPhoto(int postIdx, PostReviewPhotoReq postReviewPhotoReq){
-//        String insertPostImgQuery =
-//                "        INSERT INTO PostImgUrl(postIdx, imgUrl)\n" +
-//                        "        VALUES (?, ?);";
-//        Object[] insertPostImgParams = new Object[]{postIdx,postReviewPhotoReq.getPhoto()};
-//        this.jdbcTemplate.update(insertPostImgQuery, insertPostImgParams);
-//
-//        String lastInserIdQuery = "select last_insert_id()";
-//        return this.jdbcTemplate.queryForObject(lastInserIdQuery,int.class);
-//    }
+     //리뷰 이미지 작성
+    public int insertReviewPhoto(int reviewId, PostReviewPhotoReq postReviewPhotoReq){
+        String insertPostImgQuery =
+                "        INSERT INTO reviewPhoto(review_id, photo)\n" +
+                        "        VALUES (?, ?);";
+        Object[] insertPostImgParams = new Object[]{reviewId,postReviewPhotoReq.getPhoto()};
+        this.jdbcTemplate.update(insertPostImgQuery, insertPostImgParams);
+
+        String lastInserIdQuery = "select last_insert_id()";
+        return this.jdbcTemplate.queryForObject(lastInserIdQuery,int.class);
+    }
 }

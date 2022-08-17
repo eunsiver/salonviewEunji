@@ -12,15 +12,14 @@ import java.util.List;
 public class PostReviewReq {
 
     private int review_id;
-    private String shop_name;
     private String user_id;
     private String hair_type;
     private String hair_length;
     private String hair_tag;
     private String kindness;
     private String price;
-    private String rating;
+    private int rating;
     private String content;
-    private List<GetReviewsPhotoRes> photo;
+    private List<PostReviewPhotoReq> photo;
 
 }

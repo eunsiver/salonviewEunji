@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import static com.springboot.security.config.BaseResponseStatus.DATABASE_ERROR;
+import static com.springboot.security.config.BaseResponseStatus.RESPONSE_ERROR;
 
 @Service
 public class ReviewService {
@@ -22,17 +23,23 @@ public class ReviewService {
         this.reviewProvider = reviewProvider;
 
     }
-    public PostReviewRes createReview(String userIdx, PostReviewReq postReviewReq) throws BaseException {
+    public PostReviewRes createReview(String userId, int shopId,PostReviewReq postReviewReq) throws BaseException {
 
 
         try{
-            int postIdx = reviewDao.insertReview(userIdx, postReviewReq);
-//            for(int i=0; i< postReviewReq.getPhoto().size(); i++) {
-//                reviewDao.insertReviewPhoto(postIdx, postReviewReq.getPhoto().get(i));
-//            }
-            return new PostReviewRes(postIdx);
+
+            int reviewId = reviewDao.insertReview(userId, shopId, postReviewReq);
+
+            int photoSize=postReviewReq.getPhoto().size();
+            if (photoSize>=1){
+                for(int i=0; i< postReviewReq.getPhoto().size(); i++) {
+                    reviewDao.insertReviewPhoto(reviewId, postReviewReq.getPhoto().get(i));
+                }
+            }
+            return new PostReviewRes(reviewId);
         } catch (Exception exception) {
-            throw new BaseException(DATABASE_ERROR);
+            exception.getStackTrace();
+            throw new BaseException(RESPONSE_ERROR);
         }
     }
 }

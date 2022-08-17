@@ -50,15 +50,12 @@ public class ReviewController {
         if(postReviewReq.getPrice()==null){
             return new BaseResponse<>(POST_REVIEWS_EMPTY_CONTENT);
         }
-        if(postReviewReq.getRating()==null){
-            return new BaseResponse<>(POST_REVIEWS_EMPTY_CONTENT);
-        }
-        if(postReviewReq.getShop_name()==null){
-            return new BaseResponse<>(POST_REVIEWS_EMPTY_CONTENT);
-        }
+
         try{
             String userId =(String)session.getAttribute("currentUserId");
-            PostReviewRes postReviewRes = reviewService.createReview(userId,postReviewReq);
+            int shopId=((Integer) session.getAttribute("searchShopId")).intValue();
+
+            PostReviewRes postReviewRes = reviewService.createReview(userId,shopId,postReviewReq);
             return new BaseResponse<>(postReviewRes);
         } catch(BaseException exception){
             return new BaseResponse<>((exception.getStatus()));

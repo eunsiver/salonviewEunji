@@ -77,6 +77,7 @@ public class NaverLoginController {
             session.setAttribute("currentUser", res);
             session.setAttribute("currentAT", json.get("access_token"));
             session.setAttribute("currentRT", json.get("refresh_token"));
+
            // System.out.println( "token= "+json.get("access_token"));
 
 

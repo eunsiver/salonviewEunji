@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -28,17 +29,19 @@ public class ShopController {
 
     //헤어샵 이름으로 검색 시 이름 포함된 헤어샵 리스트로 출력
     @GetMapping("/searchShopNames")
-    @ResponseBody
-    public List<GetShopRes> getShops(@RequestParam("shopName")String shopName) {
+    public  List<GetShopRes> getShops(@RequestParam("shopName")String shopName) {
 
         List<GetShopRes> shopRes = shopProvider.getShop(shopName);
+
         return shopRes;
     }
 
     //하나 선택 된 헤어샵 id 정보
     @GetMapping("/searchShopNames/{shopId}")
-    public String getOneShop(@PathVariable("shopId") int shopId){
+    public String getOneShop(@PathVariable("shopId") int shopId, HttpSession session){
         GetShopRes oneShopRes=shopProvider.getOneShop(shopId);
+        session.setAttribute("searchShopId",new Integer( oneShopRes.getShop_id()));
+
         return oneShopRes.getShop_name();
 
     }
