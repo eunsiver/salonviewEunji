@@ -30,12 +30,9 @@ public class ReviewService {
 
             int reviewId = reviewDao.insertReview(userId, shopId, postReviewReq);
 
-            int photoSize=postReviewReq.getPhoto().size();
-            if (photoSize>=1){
-                for(int i=0; i< postReviewReq.getPhoto().size(); i++) {
-                    reviewDao.insertReviewPhoto(reviewId, postReviewReq.getPhoto().get(i));
-                }
-            }
+//            for(int i=0; i< postReviewReq.getPhoto().size(); i++) {
+//                    reviewDao.insertReviewPhoto(reviewId, postReviewReq.getPhoto().get(i));
+//            }
             return new PostReviewRes(reviewId);
         } catch (Exception exception) {
             exception.getStackTrace();

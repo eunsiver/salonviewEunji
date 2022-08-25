@@ -1,6 +1,7 @@
 package com.springboot.security.user;
 
 
+import com.springboot.security.utils.JwtService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,13 @@ public class UserService {
 
     private final UserDao userDao;
     private final UserProvider userProvider;
-
+    private final JwtService jwtService;
 
     @Autowired
-    public UserService(UserDao userDao, UserProvider userProvider) {
+    public UserService(UserDao userDao, UserProvider userProvider, JwtService jwtService) {
         this.userDao = userDao;
         this.userProvider = userProvider;
+        this.jwtService = jwtService;
 
     }
 

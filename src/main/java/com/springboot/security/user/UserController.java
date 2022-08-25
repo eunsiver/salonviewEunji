@@ -22,6 +22,7 @@ public class UserController {
         this.userProvider = userProvider;
     }
 
+
    @GetMapping("")
     public List<GetUserRes> getUser() {
         List<GetUserRes> userRes = userProvider.getUser();

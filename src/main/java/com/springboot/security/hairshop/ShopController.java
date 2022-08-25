@@ -36,7 +36,7 @@ public class ShopController {
         return shopRes;
     }
 
-    //하나 선택 된 헤어샵 id 정보
+    //리스트 중 하나 눌렀을 때 선택 된 헤어샵 id 정보
     @GetMapping("/searchShopNames/{shopId}")
     public String getOneShop(@PathVariable("shopId") int shopId, HttpSession session){
         GetShopRes oneShopRes=shopProvider.getOneShop(shopId);
