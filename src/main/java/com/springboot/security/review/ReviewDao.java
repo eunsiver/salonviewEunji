@@ -42,4 +42,12 @@ public class ReviewDao {
         String lastInserIdQuery = "select last_insert_id()";
         return this.jdbcTemplate.queryForObject(lastInserIdQuery,int.class);
     }
+
+    // 리뷰 작성 시 포인트 등록
+    public int insertPoint(String userId,int point){
+        String insertPointQuery =
+                "update user set point=? where user_id=?;";
+
+       return this.jdbcTemplate.update(insertPointQuery, point, userId);
+    }
 }

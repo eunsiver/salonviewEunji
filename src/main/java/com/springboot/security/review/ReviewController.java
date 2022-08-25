@@ -64,13 +64,18 @@ public class ReviewController {
 
         try{
             String userId = (String) userMap.get("id");
-          //  String userId =(String) session.getAttribute("currentUserId");
             int shopId=((Integer) session.getAttribute("searchShopId")).intValue();
-//            System.out.print(userId);
 
-//           System.out.print(userId);
+            // 리뷰 등록
             PostReviewRes postReviewRes = reviewService.createReview(userId,shopId,postReviewReq);
-//
+            // 포인트 등록
+            //리뷰 썼을 때 포인트 추가, 글만 썼을 때 500포인트, 사진까지 했을 시 1000 포인트
+            int point =500;
+            if(postReviewReq.getPhoto().size()>1){
+                point +=500;
+            }
+            reviewService.updatePoint(userId,point);
+
             return new BaseResponse<>(postReviewRes);
         } catch(Exception exception){
             return new BaseResponse<>((exception.getStackTrace()));

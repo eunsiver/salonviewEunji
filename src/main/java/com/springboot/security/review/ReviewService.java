@@ -30,13 +30,25 @@ public class ReviewService {
 
             int reviewId = reviewDao.insertReview(userId, shopId, postReviewReq);
 
-//            for(int i=0; i< postReviewReq.getPhoto().size(); i++) {
-//                    reviewDao.insertReviewPhoto(reviewId, postReviewReq.getPhoto().get(i));
-//            }
+            for(int i=0; i< postReviewReq.getPhoto().size(); i++) {
+                    reviewDao.insertReviewPhoto(reviewId, postReviewReq.getPhoto().get(i));
+            }
             return new PostReviewRes(reviewId);
         } catch (Exception exception) {
             exception.getStackTrace();
             throw new BaseException(RESPONSE_ERROR);
         }
     }
+
+    public String updatePoint(String userId, int point){
+       try{
+           reviewDao.insertPoint(userId, point);
+           return "포인트가 업데이트 되었습니다.";
+       }catch(Exception e){
+           return e.toString();
+        }
+
+
+    }
+
 }
