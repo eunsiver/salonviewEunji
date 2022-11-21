@@ -1,6 +1,8 @@
 spring-boot-security-example-1
 
 
+### Spring Boot, JDBC, Mysql 사용
+
 ![image](https://user-images.githubusercontent.com/76419984/203103306-1b48520b-70a4-423c-89a1-0213e3ceea7d.png)
 --
 [DB 모델링](https://www.notion.so/DB-a1d61b1bee674166977c20334ed4cdad)
