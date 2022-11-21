@@ -5,7 +5,10 @@ spring-boot-security-example-1
 
 ![image](https://user-images.githubusercontent.com/76419984/203103306-1b48520b-70a4-423c-89a1-0213e3ceea7d.png)
 --
-[DB 모델링](https://www.notion.so/DB-a1d61b1bee674166977c20334ed4cdad)
+![image](https://user-images.githubusercontent.com/76419984/203140781-8342e5a2-4b22-4ae6-8fdf-ab0d912f464e.png)
+![image](https://user-images.githubusercontent.com/76419984/203140883-1af20a1c-bc98-4c56-be89-5d4fa2c80855.png)
+![image](https://user-images.githubusercontent.com/76419984/203140926-e7227a41-7627-4d70-8f52-94c040b8b56a.png)
+
 
 ### 현재 구현 정도
 1. Naver Login API를 이용한 로그인 구현
