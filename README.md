@@ -12,9 +12,15 @@ spring-boot-security-example-1
 
 ### 현재 구현 정도
 1. Naver Login API를 이용한 로그인 구현
+![image](https://user-images.githubusercontent.com/76419984/203141445-19bcd8d3-4297-41c4-b288-99817107b839.png)
+
 2. Mysql과 연동하여 회원 정보 저장
 2. 헤어샵 검색 페이지 완료
+![image](https://user-images.githubusercontent.com/76419984/203141392-5a12257f-bd21-4a75-a0a4-ecdb12ac48c5.png)
+
 3. 리뷰 등록 페이지 완료
+![image](https://user-images.githubusercontent.com/76419984/203141352-cd387133-0848-4740-a2f0-53f698745c90.png)
+
 
 
 - 프론트와 연결하지 못하였으며, 일부분만 구현.
