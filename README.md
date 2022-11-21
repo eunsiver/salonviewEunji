@@ -1,5 +1,20 @@
 spring-boot-security-example-1
 
+
+![image](https://user-images.githubusercontent.com/76419984/203103306-1b48520b-70a4-423c-89a1-0213e3ceea7d.png)
+[DB 모델링](https://www.notion.so/DB-a1d61b1bee674166977c20334ed4cdad)
+
+### 현재 구현 정도
+1. Naver Login API를 이용한 로그인 구현
+2. Mysql과 연동하여 회원 정보 저장
+2. 헤어샵 검색 페이지 완료
+3. 리뷰 등록 페이지 완료
+
+
+- 프론트와 연결하지 못하였으며, 일부분만 구현.
+
+
+
 ## 구현하고자 하는 기능
 
 ** 로그인 페이지 **
@@ -56,13 +71,5 @@ spring-boot-security-example-1
 - 드롭 다운으로 보고 싶은 타입 서치→ 버튼 누르면→ 타입 각각의 탑 1 리뷰 보여줌 (사진, 간략 리뷰 두줄, 타입(@@@이 같아요))
 - 헤어샵의 별점이 높고, 리뷰 많은 순
 
-1. Naver Login API를 이용한 로그인 구현
-2. Mysql과 연동하여 회원 정보 저장
-2. 헤어샵 검색 페이지 완료
-3. 리뷰 등록 페이지 완료
 
 
-- 프론트와 연결하지 못하였으며, 일부분만 구현.
-
-![image](https://user-images.githubusercontent.com/76419984/203103306-1b48520b-70a4-423c-89a1-0213e3ceea7d.png)
-[DB 모델링](https://www.notion.so/DB-a1d61b1bee674166977c20334ed4cdad)
